@@ -5,10 +5,20 @@ import java.util.Scanner;
 import data.Book;
 
 public class DataReader {
-	private Scanner sc = new Scanner(System.in);
+	private Scanner sc;
+	
+	public DataReader() {
+		sc = new Scanner(System.in);
+	}
 	
 	public void close() {
 		sc.close();
+	}
+	
+	public int getInt() {
+		int number = sc.nextInt();
+		sc.nextLine();
+		return number;
 	}
 	
 	public Book readAndCreateBook() {
