@@ -3,12 +3,16 @@ package data;
 import utils.DataReader;
 
 public class Library {
-	public final int maxBooks = 1000;
-	private Book[] books;
-	private int booksNumber;
-	
+	public static final int MAX_BOOKS = 1000;
+	public static final int MAX_MAGAZINES = 1000;
+    private Book[] books;
+    private Magazine[] magazines;
+    private int booksNumber;
+    private int magazinesNumber;
+     
 	public Library() {
-		books = new Book[maxBooks];
+		books = new Book[MAX_BOOKS];
+		magazines = new Magazine[MAX_MAGAZINES];
 	}
 	
 	public int getBooksNumber() {
@@ -19,13 +23,30 @@ public class Library {
 		return books;
 	}
 	
+	public int getMagazinesNumber() {
+        return magazinesNumber;
+    }
+     
+    public Magazine[] getMagazines() {
+        return magazines;
+    }
+	
 	public void addBook(Book book) {
-		if(booksNumber < maxBooks) {
+		if(booksNumber < MAX_BOOKS) {
 			books[booksNumber] = book;
 			booksNumber++;
 			System.out.println("Ksi¹¿ka dodana!");
 		} else {
 			System.out.println("Maksymalna liczba ksi¹¿ek zosta³a osi¹gniêta");
+		}
+	}
+	
+	public void addMagazine(Magazine magazine) {
+		if(magazinesNumber < MAX_MAGAZINES) {
+			magazines[magazinesNumber] = magazine;
+			magazinesNumber++;
+		} else {
+			System.out.println("Maksymalna liczba magazynów zosta³a osi¹gniêta");
 		}
 	}
 	
@@ -38,4 +59,13 @@ public class Library {
 			}
 		}
 	}
+	
+	public void printMagazines() {
+        if(magazinesNumber == 0) {
+            System.out.println("Brak magazynów w bibliotece");
+        }
+        for(int i=0; i<magazinesNumber; i++) {
+            magazines[i].printInfo();
+        }
+    }
 }
